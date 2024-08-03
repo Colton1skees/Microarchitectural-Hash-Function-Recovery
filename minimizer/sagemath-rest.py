@@ -45,6 +45,9 @@ def compute_groebner_basis(str_vars: str, espresso_output: str):
     I = R.ideal(relations)
     B = I.groebner_basis()
 
+    # Remove idempotency relations from the basis
+    B = [b for b in B if b not in idempotency_relations]
+
     return str(B)
 
 class SageMathRoute(Resource):
