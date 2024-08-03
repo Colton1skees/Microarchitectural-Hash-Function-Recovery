@@ -7,9 +7,81 @@ import setcover
 import time
 import os
 
+def polybori():
+    P = BooleanPolynomialRing(Integer(8), names=('x0', 'x1', 'x2', 'x3','x4', 'x5', 'x6', 'x7',)); (x0, x1, x2, x3, x4, x5, x6, x7) = P._first_ngens(8)
+    I = P.ideal(x0 + x1 + x2 + x3 + x4 + x5 + x0*x1 + x0*x2 + x0*x3 + x0*x4 + x0*x5 + x1*x2 + x1*x3 + x1*x4 + x1*x5 + x2*x3 + x2*x4 + x2*x5 + x4*x5 + x6*x7 + x0*x1*x2 + x0*x1*x3 + x0*x1*x4 + x0*x1*x5 + x0*x2*x3 + x0*x2*x4 + x0*x2*x5 + x0*x4*x5 + x0*x6*x7 + x1*x2*x3 + x1*x2*x4 + x1*x2*x5 + x1*x4*x5 + x1*x6*x7 + x2*x4*x5 + x2*x6*x7 + x4*x6*x7 + x5*x6*x7 + x0*x1*x2*x3 + x0*x1*x2*x4 + x0*x1*x2*x5 + x0*x1*x4*x5 + x0*x1*x6*x7 + x0*x2*x4*x5 + x0*x2*x6*x7 + x0*x4*x6*x7 + x0*x5*x6*x7 + x1*x2*x4*x5 + x1*x2*x6*x7 + x1*x4*x6*x7 + x1*x5*x6*x7 + x2*x4*x6*x7 + x2*x5*x6*x7 + x4*x5*x6*x7 + x0*x1*x2*x4*x5 + x0*x1*x2*x6*x7 + x0*x1*x4*x6*x7 + x0*x1*x5*x6*x7 + x0*x2*x4*x6*x7 + x0*x2*x5*x6*x7 + x0*x4*x5*x6*x7 + x1*x2*x4*x6*x7 + x1*x2*x5*x6*x7 + x1*x4*x5*x6*x7 + x2*x4*x5*x6*x7 + x0*x1*x2*x4*x6*x7 + x0*x1*x2*x5*x6*x7 + x0*x1*x4*x5*x6*x7 + x0*x2*x4*x5*x6*x7 + x1*x2*x4*x5*x6*x7 + x0*x1*x2*x4*x5*x6*x7, x0*x0 + x0, x1*x1 + x1, x2*x2 + x2, x3*x3 + x3, x4*x4 + x4, x5*x5 + x5, x6*x6 + x6, x7*x7 + x7)
+    gb = I.groebner_basis()
+    print("gb: " + str(gb))
+    exit(1)
+    return
+
+def factorize():
+    R = PolynomialRing(GF(2), "x", 11)
+    gens = R.gens()
+    x0 = gens[0]
+    x1 = gens[1]
+    x2 = gens[2]
+    x3 = gens[3]
+    x4 = gens[4]
+    x5 = gens[5]
+    x6 = gens[6]
+    x7 = gens[7]
+    x8 = gens[8]
+    x9 = gens[9]
+    x10 = gens[10]
+
+    a = x0
+    b = x1
+    c = x2
+    d = x3
+    e = x4
+    f = x5
+    g = x6
+    h = x7
+    i = x8
+    #b = x0*x1*x5*x6 + x0*x2*x5*x6 
+
+    # I = R.ideal(relations)
+
+    # print(f"Starting Groebner ({len(relations)} relations).")
+    # time_start = time.time()
+
+    # print(I)
+    #B = I.groebner_basis()
+
+    #I = R.ideal([x0*x1*x5*x6 + x0*x2*x5*x6 ])
+    #I = R.ideal([x0*x1*x2*x3*x5*x6 + x0*x1*x2*x5*x6 + x0*x1*x3*x5*x6 + x0*x2*x3*x5*x6 + x0*x1*x5*x6 + x0*x2*x5*x6 + x0*x3*x5*x6 + x0*x5*x6, x0*x1*x2*x3*x5*x6 + x0*x1*x2*x5*x6 + x0*x1*x3*x5*x6 + x1*x2*x3*x5*x6 + x0*x1*x5*x6 + x1*x2*x5*x6 + x1*x3*x5*x6 + x1*x5*x6, x0*x1*x2*x3*x5*x6 + x0*x1*x2*x5*x6 + x0*x2*x3*x5*x6 + x1*x2*x3*x5*x6 + x0*x2*x5*x6 + x1*x2*x5*x6 + x2*x3*x5*x6 + x2*x5*x6, x0*x1*x2*x3*x5*x6 + x0*x1*x2*x5*x6, x0*x1*x2*x3 + x0*x1*x3 + x0*x2*x3 + x1*x2*x3 + x0*x3 + x1*x3 + x2*x3 + x3])
+    #I = R.ideal([x0*x1*x2*x3*x5*x6 + x0*x1*x2*x5*x6 + x0*x1*x3*x5*x6 + x0*x2*x3*x5*x6 + x0*x1*x5*x6 + x0*x2*x5*x6 + x0*x3*x5*x6 + x0*x5*x6, x0*x1*x2*x3*x5*x6 + x0*x1*x2*x5*x6 + x0*x1*x3*x5*x6 + x1*x2*x3*x5*x6 + x0*x1*x5*x6 + x1*x2*x5*x6 + x1*x3*x5*x6 + x1*x5*x6, x0*x1*x2*x3*x5*x6 + x0*x1*x2*x5*x6 + x0*x2*x3*x5*x6 + x1*x2*x3*x5*x6 + x0*x2*x5*x6 + x1*x2*x5*x6 + x2*x3*x5*x6 + x2*x5*x6, x0*x1*x2*x3*x5*x6 + x0*x1*x2*x5*x6, x0*x1*x2*x3 + x0*x1*x3 + x0*x2*x3 + x1*x2*x3 + x0*x3 + x1*x3 + x2*x3 + x3, x0*x1*x2*x3 + x0*x1*x3, x0*x1*x2*x3 + x0*x2*x3, x0*x1*x2*x3 + x1*x2*x3, x0*x1*x2*x3*x4 + x0*x1*x2*x4 + x0*x1*x3*x4 + x0*x2*x3*x4 + x0*x1*x4 + x0*x2*x4 + x0*x3*x4 + x0*x4, x0*x1*x2*x3*x4 + x0*x1*x2*x4 + x0*x1*x3*x4 + x1*x2*x3*x4 + x0*x1*x4 + x1*x2*x4 + x1*x3*x4 + x1*x4, x0*x1*x2*x3*x4 + x0*x1*x2*x4 + x0*x2*x3*x4 + x1*x2*x3*x4 + x0*x2*x4 + x1*x2*x4 + x2*x3*x4 + x2*x4, x0*x1*x2*x3*x4 + x0*x1*x2*x4, x7, x8, x9, x0**2 + x0, x1**2 + x1, x2**2 + x2, x3**2 + x3, x4**2 + x4, x5**2 + x5, x6**2 + x6, x7**2 + x7, x8**2 + x8, x9**2 + x9])
+    x = x0
+    y = x1
+
+    x = g
+    y = h
+    z = i
+    I = R.ideal([x0 + x1 + x2 + x3 + x4 + x5 + x0*x1 + x0*x2 + x0*x3 + x0*x4 + x0*x5 + x1*x2 + x1*x3 + x1*x4 + x1*x5 + x2*x3 + x2*x4 + x2*x5 + x4*x5 + x6*x7 + x0*x1*x2 + x0*x1*x3 + x0*x1*x4 + x0*x1*x5 + x0*x2*x3 + x0*x2*x4 + x0*x2*x5 + x0*x4*x5 + x0*x6*x7 + x1*x2*x3 + x1*x2*x4 + x1*x2*x5 + x1*x4*x5 + x1*x6*x7 + x2*x4*x5 + x2*x6*x7 + x4*x6*x7 + x5*x6*x7 + x0*x1*x2*x3 + x0*x1*x2*x4 + x0*x1*x2*x5 + x0*x1*x4*x5 + x0*x1*x6*x7 + x0*x2*x4*x5 + x0*x2*x6*x7 + x0*x4*x6*x7 + x0*x5*x6*x7 + x1*x2*x4*x5 + x1*x2*x6*x7 + x1*x4*x6*x7 + x1*x5*x6*x7 + x2*x4*x6*x7 + x2*x5*x6*x7 + x4*x5*x6*x7 + x0*x1*x2*x4*x5 + x0*x1*x2*x6*x7 + x0*x1*x4*x6*x7 + x0*x1*x5*x6*x7 + x0*x2*x4*x6*x7 + x0*x2*x5*x6*x7 + x0*x4*x5*x6*x7 + x1*x2*x4*x6*x7 + x1*x2*x5*x6*x7 + x1*x4*x5*x6*x7 + x2*x4*x5*x6*x7 + x0*x1*x2*x4*x6*x7 + x0*x1*x2*x5*x6*x7 + x0*x1*x4*x5*x6*x7 + x0*x2*x4*x5*x6*x7 + x1*x2*x4*x5*x6*x7 + x0*x1*x2*x4*x5*x6*x7, x0*x0 + x0, x1*x1 + x1, x2*x2 + x2, x3*x3 + x3, x4*x4 + x4, x5*x5 + x5, x6*x6 + x6, x7*x7 + x7])
+    print(I)
+    groebner = I.groebner_basis()
+    print(groebner)
+    exit(1)
+    b = c + x + y + z + b*c + b*y + b*z + c*x + c*y + c*z + x*y + x*z + y*z + b*c*x + b*c*y + b*c*z + b*x*y + b*y*z + c*x*y + c*y*z + x*y*z + a*b*c*x + a*b*c*y + a*b*c*z + b*c*x*y + b*c*y*z + a*b*c*x*y + a*b*c*y*z
+    #b = (((((((((((((((((((((((x0+x1)+x2)+x3)+x4)+x5)+(x0*x1))+(x0*x4))+(x0*x6))+(x1*x4))+(x1*x6))+(x2*x4))+(x2*x6))+(x3*x4))+(x3*x6))+(x4*x6))+(x5*x6))+((x0*x1)*x4))+((x0*x1)*x6))+((x0*x4)*x6))+((x1*x4)*x6))+((x2*x4)*x6))+((x3*x4)*x6))+(((x0*x1)*x4)*x6))
+    #b = ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((x3+x7)+x8)+x9)+(x0*x3))+(x0*x4))+(x1*x3))+(x1*x4))+(x2*x3))+(x2*x4))+(x3*x7))+(x3*x8))+(x3*x9))+(x7*x8))+(x7*x9))+(x8*x9))+((x0*x3)*x4))+((x0*x3)*x7))+((x0*x3)*x8))+((x0*x3)*x9))+((x0*x4)*x7))+((x0*x4)*x8))+((x0*x4)*x9))+((x0*x5)*x6))+((x1*x3)*x4))+((x1*x3)*x7))+((x1*x3)*x8))+((x1*x3)*x9))+((x1*x4)*x7))+((x1*x4)*x8))+((x1*x4)*x9))+((x1*x5)*x6))+((x2*x3)*x4))+((x2*x3)*x7))+((x2*x3)*x8))+((x2*x3)*x9))+((x2*x4)*x7))+((x2*x4)*x8))+((x2*x4)*x9))+((x2*x5)*x6))+((x3*x7)*x8))+((x3*x7)*x9))+((x3*x8)*x9))+((x7*x8)*x9))+(((x0*x3)*x4)*x7))+(((x0*x3)*x4)*x8))+(((x0*x3)*x4)*x9))+(((x0*x3)*x5)*x6))+(((x0*x3)*x7)*x8))+(((x0*x3)*x7)*x9))+(((x0*x3)*x8)*x9))+(((x0*x4)*x5)*x6))+(((x0*x4)*x7)*x8))+(((x0*x4)*x7)*x9))+(((x0*x4)*x8)*x9))+(((x0*x5)*x6)*x7))+(((x0*x5)*x6)*x8))+(((x0*x5)*x6)*x9))+(((x1*x3)*x4)*x7))+(((x1*x3)*x4)*x8))+(((x1*x3)*x4)*x9))+(((x1*x3)*x5)*x6))+(((x1*x3)*x7)*x8))+(((x1*x3)*x7)*x9))+(((x1*x3)*x8)*x9))+(((x1*x4)*x5)*x6))+(((x1*x4)*x7)*x8))+(((x1*x4)*x7)*x9))+(((x1*x4)*x8)*x9))+(((x1*x5)*x6)*x7))+(((x1*x5)*x6)*x8))+(((x1*x5)*x6)*x9))+(((x2*x3)*x4)*x7))+(((x2*x3)*x4)*x8))+(((x2*x3)*x4)*x9))+(((x2*x3)*x5)*x6))+(((x2*x3)*x7)*x8))+(((x2*x3)*x7)*x9))+(((x2*x3)*x8)*x9))+(((x2*x4)*x5)*x6))+(((x2*x4)*x7)*x8))+(((x2*x4)*x7)*x9))+(((x2*x4)*x8)*x9))+(((x2*x5)*x6)*x7))+(((x2*x5)*x6)*x8))+(((x2*x5)*x6)*x9))+(((x3*x7)*x8)*x9))+((((x0*x3)*x4)*x5)*x6))+((((x0*x3)*x4)*x7)*x8))+((((x0*x3)*x4)*x7)*x9))+((((x0*x3)*x4)*x8)*x9))+((((x0*x3)*x5)*x6)*x7))+((((x0*x3)*x5)*x6)*x8))+((((x0*x3)*x5)*x6)*x9))+((((x0*x3)*x7)*x8)*x9))+((((x0*x4)*x5)*x6)*x7))+((((x0*x4)*x5)*x6)*x8))+((((x0*x4)*x5)*x6)*x9))+((((x0*x4)*x7)*x8)*x9))+((((x0*x5)*x6)*x7)*x8))+((((x0*x5)*x6)*x7)*x9))+((((x0*x5)*x6)*x8)*x9))+((((x1*x3)*x4)*x5)*x6))+((((x1*x3)*x4)*x7)*x8))+((((x1*x3)*x4)*x7)*x9))+((((x1*x3)*x4)*x8)*x9))+((((x1*x3)*x5)*x6)*x7))+((((x1*x3)*x5)*x6)*x8))+((((x1*x3)*x5)*x6)*x9))+((((x1*x3)*x7)*x8)*x9))+((((x1*x4)*x5)*x6)*x7))+((((x1*x4)*x5)*x6)*x8))+((((x1*x4)*x5)*x6)*x9))+((((x1*x4)*x7)*x8)*x9))+((((x1*x5)*x6)*x7)*x8))+((((x1*x5)*x6)*x7)*x9))+((((x1*x5)*x6)*x8)*x9))+((((x2*x3)*x4)*x5)*x6))+((((x2*x3)*x4)*x7)*x8))+((((x2*x3)*x4)*x7)*x9))+((((x2*x3)*x4)*x8)*x9))+((((x2*x3)*x5)*x6)*x7))+((((x2*x3)*x5)*x6)*x8))+((((x2*x3)*x5)*x6)*x9))+((((x2*x3)*x7)*x8)*x9))+((((x2*x4)*x5)*x6)*x7))+((((x2*x4)*x5)*x6)*x8))+((((x2*x4)*x5)*x6)*x9))+((((x2*x4)*x7)*x8)*x9))+((((x2*x5)*x6)*x7)*x8))+((((x2*x5)*x6)*x7)*x9))+((((x2*x5)*x6)*x8)*x9))+(((((x0*x3)*x4)*x5)*x6)*x7))+(((((x0*x3)*x4)*x5)*x6)*x8))+(((((x0*x3)*x4)*x5)*x6)*x9))+(((((x0*x3)*x4)*x7)*x8)*x9))+(((((x0*x3)*x5)*x6)*x7)*x8))+(((((x0*x3)*x5)*x6)*x7)*x9))+(((((x0*x3)*x5)*x6)*x8)*x9))+(((((x0*x4)*x5)*x6)*x7)*x8))+(((((x0*x4)*x5)*x6)*x7)*x9))+(((((x0*x4)*x5)*x6)*x8)*x9))+(((((x0*x5)*x6)*x7)*x8)*x9))+(((((x1*x3)*x4)*x5)*x6)*x7))+(((((x1*x3)*x4)*x5)*x6)*x8))+(((((x1*x3)*x4)*x5)*x6)*x9))+(((((x1*x3)*x4)*x7)*x8)*x9))+(((((x1*x3)*x5)*x6)*x7)*x8))+(((((x1*x3)*x5)*x6)*x7)*x9))+(((((x1*x3)*x5)*x6)*x8)*x9))+(((((x1*x4)*x5)*x6)*x7)*x8))+(((((x1*x4)*x5)*x6)*x7)*x9))+(((((x1*x4)*x5)*x6)*x8)*x9))+(((((x1*x5)*x6)*x7)*x8)*x9))+(((((x2*x3)*x4)*x5)*x6)*x7))+(((((x2*x3)*x4)*x5)*x6)*x8))+(((((x2*x3)*x4)*x5)*x6)*x9))+(((((x2*x3)*x4)*x7)*x8)*x9))+(((((x2*x3)*x5)*x6)*x7)*x8))+(((((x2*x3)*x5)*x6)*x7)*x9))+(((((x2*x3)*x5)*x6)*x8)*x9))+(((((x2*x4)*x5)*x6)*x7)*x8))+(((((x2*x4)*x5)*x6)*x7)*x9))+(((((x2*x4)*x5)*x6)*x8)*x9))+(((((x2*x5)*x6)*x7)*x8)*x9))+((((((x0*x3)*x4)*x5)*x6)*x7)*x8))+((((((x0*x3)*x4)*x5)*x6)*x7)*x9))+((((((x0*x3)*x4)*x5)*x6)*x8)*x9))+((((((x0*x3)*x5)*x6)*x7)*x8)*x9))+((((((x0*x4)*x5)*x6)*x7)*x8)*x9))+((((((x1*x3)*x4)*x5)*x6)*x7)*x8))+((((((x1*x3)*x4)*x5)*x6)*x7)*x9))+((((((x1*x3)*x4)*x5)*x6)*x8)*x9))+((((((x1*x3)*x5)*x6)*x7)*x8)*x9))+((((((x1*x4)*x5)*x6)*x7)*x8)*x9))+((((((x2*x3)*x4)*x5)*x6)*x7)*x8))+((((((x2*x3)*x4)*x5)*x6)*x7)*x9))+((((((x2*x3)*x4)*x5)*x6)*x8)*x9))+((((((x2*x3)*x5)*x6)*x7)*x8)*x9))+((((((x2*x4)*x5)*x6)*x7)*x8)*x9))+(((((((x0*x3)*x4)*x5)*x6)*x7)*x8)*x9))+(((((((x1*x3)*x4)*x5)*x6)*x7)*x8)*x9))+(((((((x2*x3)*x4)*x5)*x6)*x7)*x8)*x9))
+    f = b.factor()
+    #b = b.full_simplify()
+    print("factored: " + str(f))
+
+    #print(gens)
+    return
+
+#print("running polybori")
+#polybori()
+#factorize()
+#exit(1)
+
 
 
 ESPRESSO_EXECUTABLE = os.environ.get("ESPRESSO_EXECUTABLE") # Path to the espresso executable
+ESPRESSO_EXECUTABLE = "/home/colton/espresso-logic/bin/espresso"
 
 _TIME_TOTAL = -time.time()
 _TIME_IN_ESPRESSO = 0
@@ -106,6 +178,8 @@ class BinaryNode:
                 if self.symbol == "|":
                     subset = [value for value in it.product([0, 1], repeat=n) if formula(value)] 
                 else:
+                    #print('n: ' + str(n))
+                    #n = 1
                     subset = [value for value in it.product([0, 1], repeat=n) if not formula(value)] 
                 subsets.append(subset)
             time_start = time.time()
@@ -239,7 +313,9 @@ def read_bits_csv(path, bit_num):
 
     return relevant_bits, values
 
+n = -1
 def read_espresso_in(path):
+    global n
     with open(f"{path}") as f:
         data = f.readlines()
 
@@ -333,17 +409,27 @@ def compute_groebner_basis(bits, values):
     print(f"Starting Groebner ({len(relations)} relations).")
     time_start = time.time()
 
+    print(I)
     B = I.groebner_basis()
+
+    print(B)
+ 
+
     B = [b for b in B if b not in idempotency_relations]
     time_end = time.time()
     _TIME_IN_GROEBNER += (time_end - time_start)
 
+    print(f"bits: {str(bits)}")
+    print(f"values: {str(values)}")
+    print(B)
+    exit(1)
     return B
 
 seen = set()
 
 def minimize_rec(x, bitstrings, negate=False, depth=0, size=10**10):
     basis = compute_groebner_basis(x, bitstrings)
+    print(f"basis: {basis}")
     newsize = sum( len(list(str(b))) for b in basis )
     if newsize > size:
         return None
@@ -379,6 +465,92 @@ def minimize_rec(x, bitstrings, negate=False, depth=0, size=10**10):
         return Or(result)
 
 import sys
+
+formula = None
+def runn(path, outputPath):
+    negate = False
+
+    n, data = read_espresso_in(path)
+
+
+    check_value = 1 if not negate else 0
+    values = [ value for value, y in data if y == check_value ]
+
+    global R
+
+    R = PolynomialRing(GF(2), "x", n)
+    x = R.gens()
+
+    tree = minimize_rec(x, values, negate=negate)
+    tree = modify(tree, simplify_all)
+    tree = modify(tree, simplify_all)
+
+    for leaf in tree.leafs():
+        leaf.value = x.index(leaf.value)
+
+    for leaf in tree.leafs():
+        leaf.value = f"x[{leaf.value}]"
+
+    _TIME_TREE_SIMPLIFICATION = -time.time()
+    tree.traverse()
+    _TIME_TREE_SIMPLIFICATION += time.time()
+
+
+    extract_xors = False
+
+    print("Generating Code.")
+    if not extract_xors:
+        code = "formula = lambda x: " + str(tree) + " & 1\n"
+        tree_size = tree.size()
+    else:
+        tmp_tree = tree.copy()
+        tree_size = 0
+        code = "def formula(x):\n"
+        remap = {}
+        for node in tmp_tree.find("^"):
+            str_node = str(node)
+            if str_node in remap:
+                idx = remap[str_node]
+            else:
+                idx = remap[str_node] = len(remap)
+                code += f"    y{idx} = " + str_node + "\n"
+                tree_size += node.size()
+            node.children = [LeafNode(f"y{idx}")]
+        code += f"    return " + str(tmp_tree) + " & 1\n"
+        tmp_tree = modify(tmp_tree, simplify_all)
+        tree_size += tmp_tree.size()
+
+    print()
+    print("code: \n" + str(code))
+
+    return
+
+    with open(outputPath, "w") as text_file:
+        text_file.write(str(code))
+
+
+for varCount in range(3, 4):
+    print(f'Processing {varCount} vars')
+
+    # Create the directory if it doesn't exist
+    dirName = f'f"Espresso{varCount}Output"'
+    if not os.path.exists(dirName):
+        os.makedirs(dirName)
+
+    for i in range(0, 2**2**varCount):
+        print(f'Processing index: {i} for {varCount} variables')
+        path = f'/home/colton/Microarchitectural-Hash-Function-Recovery/minimizer/Espresso{varCount}/entry_{i}.in'
+        outputPath = f'{dirName}/ouptut_{i}.py'
+        #print(path)
+        #print(outputPath)
+
+        runn(path, outputPath)
+
+
+print("done")
+exit(1)
+runn('/home/colton/Microarchitectural-Hash-Function-Recovery/minimizer/entry_0.in')
+exit(1)
 
 if len(sys.argv) < 2:
     print("python test.py <path to espresso input> [negate]")

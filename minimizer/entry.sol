@@ -1,0 +1,12 @@
+formula = lambda x: (~x[0] | ~x[1]) & 1
+Timing: 
+_TIME_IN_ESPRESSO=0.001
+_TIME_IN_GROEBNER=0.012
+_TIME_IN_SETCOVER=0.007
+_TIME_TREE_SIMPLIFICATION=0.007
+_TIME_TOTAL=0.035
+
+Stats: 
+_TOTAL_GROEBNER_CALLS=1
+n=2
+tree_size=5
