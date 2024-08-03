@@ -55,6 +55,11 @@ def factorize():
     x = x0
     y = x1
 
+    op1 = x*y
+    print("factor: " + str(factor(x*y)))
+    print(op1.degree())
+    exit(1)
+
     x = g
     y = h
     z = i
@@ -419,23 +424,29 @@ def compute_groebner_basis(bits, values):
     time_end = time.time()
     _TIME_IN_GROEBNER += (time_end - time_start)
 
-    print(f"bits: {str(bits)}")
-    print(f"values: {str(values)}")
-    print(B)
-    exit(1)
+    # print(f"bits: {str(bits)}")
+    # print(f"values: {str(values)}")
+    # print(B)
+    # exit(1)
     return B
 
 seen = set()
 
 def minimize_rec(x, bitstrings, negate=False, depth=0, size=10**10):
+    print("minimize_rec")
     basis = compute_groebner_basis(x, bitstrings)
-    print(f"basis: {basis}")
     newsize = sum( len(list(str(b))) for b in basis )
     if newsize > size:
         return None
     result = []
+    print(f"GROEBNER_BASIS: {basis}")
     for element in basis:
         factors = []
+        print(f"Elem ({str(element)})")
+        myfactors = factor(element)
+        for fac, _ in factor(element):
+            print(f"    factor: {str(fac)}")
+
         for fac, _ in factor(element):
             if fac.degree() <= 1 or len(list(fac)) <= 1 or fac in seen or depth > 5:
 
@@ -529,7 +540,7 @@ def runn(path, outputPath):
         text_file.write(str(code))
 
 
-for varCount in range(3, 4):
+for varCount in range(4, 5):
     print(f'Processing {varCount} vars')
 
     # Create the directory if it doesn't exist
